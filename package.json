@@ -1,0 +1,23 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "Url shortener website",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nebji/url-shortener.git"
+  },
+  "author": "Benjamin Lissillour",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nebji/url-shortener/issues"
+  },
+  "homepage": "https://github.com/nebji/url-shortener#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

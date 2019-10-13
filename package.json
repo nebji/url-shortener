@@ -4,7 +4,7 @@
   "description": "Url shortener website",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start app.js --only app --attach",
+    "start": "pm2 start app.js",
     "dev": "pm2 start app.js --watch && pm2 logs -f"
   },
   "repository": {

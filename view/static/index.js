@@ -11,11 +11,11 @@ function shortenUrlCall() {
         }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(response) {
+        success: (response) => {
             $("#shorten-url").val(response.new_url);
         },
-        failure: function(errMsg) {
-            alert(errMsg);
+        failure: (errMsg) => {
+            console.error(errMsg);
         }
     })
 }

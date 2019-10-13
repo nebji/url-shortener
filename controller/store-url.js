@@ -17,6 +17,7 @@ module.exports = (request, response) => {
         headers: { host }
     } = request;
 
+    // Reject duplicate key
     if (requestedPath && db.keyExist(requestedPath)) {
         return response.status(400).json({
             status: "error",
@@ -34,11 +35,13 @@ module.exports = (request, response) => {
         ).json(error);
     }
 
-    response.status(201).send({
+    return response.status(201).send({
         new_url: `${ host }/${ newPath }`
     });
 };
 
+// Function to generate a random string containing letters and numbers
+// of a random size between 6 and 9
 function generateString() {
     const size = Math.floor((Math.random() * (9 - 6 + 1)) + 6);
     const randomSizeString = (`${

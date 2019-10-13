@@ -17,6 +17,8 @@ module.exports = (request, response) => {
         );
     }
 
+    // Add a http:// default prefix if the
+    // URL doesn't have one (https or http)
     if (!redirectUrl.match(/^https?:\/\//g)) {
         redirectUrl = `http://${ redirectUrl }`;
     }

@@ -1,4 +1,5 @@
 const db = require("../db/memory");
+const path = require("path");
 
 module.exports = (request, response) => {
     const { params: { urlParameter }} = request;
@@ -11,10 +12,13 @@ module.exports = (request, response) => {
     }
 
     if (!redirectUrl) {
-        return response.status(404).json({
-            status: "error",
-            message: "url not found"
-        });
+        return response.status(404).sendFile(
+            path.join(`${ __dirname }/../view/not-found.html`)
+        );
+    }
+
+    if (!redirectUrl.match(/^https?:\/\//g)) {
+        redirectUrl = `http://${ redirectUrl }`;
     }
     return response.redirect(redirectUrl);
 };

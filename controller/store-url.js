@@ -1,6 +1,7 @@
 const db = require("../db/memory");
 
 module.exports = (request, response) => {
+    // Check the required field
     if (!request.body || !request.body.url) {
         return response.status(400).json({
             status: "error",
@@ -8,22 +9,25 @@ module.exports = (request, response) => {
         });
     }
 
-    const { body: {
-        url: urlToShorten,
-        requested_url: requestedUrl
-    }} = request;
+    const {
+        body: {
+            url: urlToShorten,
+            requested_path: requestedPath
+        },
+        headers: { host }
+    } = request;
 
-    if (requestedUrl && db.keyExist(requestedUrl)) {
+    if (requestedPath && db.keyExist(requestedPath)) {
         return response.status(400).json({
             status: "error",
             message: "The requested url is already taken"
         });
     }
 
-    const newUrl = requestedUrl || generateString();
+    const newPath = requestedPath || generateString();
 
     try {
-        db.store(newUrl, urlToShorten, true);
+        db.store(newPath, urlToShorten, true);
     } catch (error) {
         return response.status(
             error.statusCode || 500
@@ -31,7 +35,7 @@ module.exports = (request, response) => {
     }
 
     response.status(201).send({
-        new_url: `${ request.hostname }/${ newUrl }`
+        new_url: `${ host }/${ newPath }`
     });
 };
 

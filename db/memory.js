@@ -1,5 +1,4 @@
-// Manage the DB connection here
-
+// Simulate a database
 class MemoryDB {
     constructor() {
         this.db = {};
@@ -10,9 +9,7 @@ class MemoryDB {
     }
 
     store(key, value, unique) {
-        console.log("here");
         if ((key in this.db) && unique) {
-            console.log(key);
             throw new Error("DUPLICATE_KEY");
         }
         this.db[key] = value;

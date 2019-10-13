@@ -13,7 +13,9 @@ module.exports = () => {
 
     // Default url
     router.use((request, response) => {
-        response.status(404).send();
+        response.status(404).sendFile(
+            path.join(`${ __dirname }/../view/not-found.html`)
+        );
     });
     return router;
 };

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Url Shortener</title>   
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+</head>
+  <body>
+     <div class="container">
+       <div class="title">
+        <h1>
+            Url Shortener
+        </h1>
+      </div>
+       <div class="form-container">
+          <form action="javascript:void(0);" id="url-form" onsubmit="shortenUrlCall()">
+               <label>Url to be shorten</label>
+               <input type="text" id="url-to-shorten" placeholder="e.g. https://google.com">
+               <label> Path of the shorten URL - <span class="optional"> optionnal </span></label>
+               <input type="text" id="requested-path" placeholder="e.g. 123">
+               <input type="submit" value="Short the Url">
+          </form>
+          <label>Shorten URL</label>
+          <input type="text" id="shorten-url" onClick="selectInput(this)">
+       </div>
+     </div>
+  </body>
+</html>
+
+

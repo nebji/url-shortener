@@ -8,7 +8,7 @@ module.exports = (request, response) => {
     try {
         redirectUrl = db.get(urlParameter);
     } catch (error) {
-        response.status(error.statusCode || 500).json(error);
+        return response.status(error.statusCode || 500).json(error);
     }
 
     if (!redirectUrl) {

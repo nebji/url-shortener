@@ -19,6 +19,6 @@
   "homepage": "https://github.com/nebji/url-shortener#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "pm2": "^4.0.0"
+    "pm2": "^5.2.0"
   }
 }
